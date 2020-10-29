@@ -1,0 +1,8 @@
+tolerance 2.0
+filetype xyz
+output vapor.inp.xyz
+
+structure water2.xyz
+  number 32
+  inside box 0. 0. 0. 57. 57. 57.
+end structure
