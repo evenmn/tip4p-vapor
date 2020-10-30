@@ -1,0 +1,9 @@
+Molecular dynamics (MD) modelling might be the most popular technique for atomistic modelling as it is able to model a long range of physical systems. The approach is to solve the equation of motion,
+!bt
+\frac{d^2\boldsymbol{r}}{dt^2}=\frac{\boldsymbol{F}_{\text{net}}}{m},
+!et
+using numerical integration. Here, $\boldsymbol{r}$ are the positions, $\boldsymbol{F}_{\text{net}}$ is the net force acting on the particles and $m$ are the masses. The force is found from differentiating the inter-particle potential, which again often is found from quantum mechanical computations. Given a realistic inter-atomic potential, the hope is that the system also behaves realistically.
+
+In our case, the system of interest is water. Many water force-fields have been proposed, some better than other. The large number of force-fields indicates that it is hard to find a potential that model water realistically, which again indicates that water is a very complicated substance. TIP4P/2005 cite{vegaabascal} is currently among the most popular water force-fields due to its tradeoff between accuracy and computational efficiency. It is the model that we will apply here.
+
+

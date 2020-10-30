@@ -1,0 +1,49 @@
+# Reference: M. Orsi, Comparative assessment of the ELBA coarse-grained
+# model for water, Molecular Physics (2014), 112, 1566-1576
+#
+# There are four required arguments:
+# 1. datafile: data file containing coordinates of atoms in water molecule
+# 2. paramfile: File containing potential parameters
+# 3. heat_time: Self explanatory, units fs
+# 4. low_temp: initial temperature
+# 5. high_temp: final temperature
+# 6. seed: Seed to be used when initializing the velocities
+#
+
+units real
+atom_style full
+read_data ${datafile}
+include ${paramfile}
+replicate 32 16 16
+
+neigh_modify every 1 delay 0 check yes
+fix constrain all shake 1.0e-4 100 0 b 1 a 1
+
+change_box all x scale 3
+
+variable dt equal 2.0
+timestep ${dt}
+
+variable heat_steps equal $(v_heat_time/dt)
+
+thermo_style custom step time atoms temp vol enthalpy etotal pe press pxx pyy pzz density spcpu cpuremain
+thermo 1
+dump 1 all atom 100 dump.lammpstrj
+
+# Thermalize
+velocity all create $(v_low_temp/2) ${seed} dist gaussian rot yes
+# fix nve all nve
+# run 10000
+# unfix nve
+
+fix nvt all nvt temp ${low_temp} ${high_temp} 200.0
+# run 10000
+# unfix nvt
+
+# Run
+# fix nvt all nvt temp ${low_temp} ${high_temp} 200.0
+
+# neighbor 2.0 bin
+
+run ${heat_steps}
+write_data vapor_${high_temp}K.data
