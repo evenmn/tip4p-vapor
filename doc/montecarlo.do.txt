@@ -1,1 +1,3 @@
-kdkjjdkj
+Monte Carlo (MC) simulations is an alternative to molecular dynamics simulations. Instead of solving the equation of motion directly, the particles are sampled throughout the space and average properties are measured. As ergodicity applies to our systems, the time-averaged properties are assumed to be equal to the space-averaged ones. Monte Carlo simulations hold the temperature constant by default as we move the particles a random distance drawn from a normal distribution at every time step. Therefore, ordinary Monte carlo simulations model the NVT ensemble.
+
+INCLUDE SOME EQUATIONS HERE, INCLUDING PARTITION FUNCTION
