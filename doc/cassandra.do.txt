@@ -1,1 +1,5 @@
-hgdhgh
+There exist many packages for Monte Carlo simulations. Some of them are well-implemented, only a few of them support complicated force-fields, none of them are well-documented or in particular easy to use. Here, we stick to Cassandra and Towhee, which seems to be among the most promising packages out there.
+
+Cassandra is written in Fortran 90, and was developed by the Maginn group at the university of Notre Dame. This package is still updated, and can be found at Github, which is a big plus. However, the package supports Class-I force-fields, which means bonded atoms only.
+
+To run the code, we need several files:
