@@ -1,0 +1,8 @@
+tolerance 2.0
+filetype xyz
+output liquid_towhee.xyz
+
+structure water_Ofirst.xyz
+  number 384
+  inside box 0. 0. 0. 22.586 22.586 22.586
+end structure
