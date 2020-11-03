@@ -1,9 +1,13 @@
-  
+
 TITLE:  Simulation liquid-vaport coexistence of TIP4P-water
 AUTHOR: Even Marius Nordhagen
 DATE: today
 
 TOC: on
+
+!split
+========= Introduction =========
+# #include "introduction.do.txt"
 
 !split
 ========= Why molecular dynamics is not suitable for these kind of systems =========

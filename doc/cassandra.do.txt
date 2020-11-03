@@ -3,3 +3,33 @@ There exist many packages for Monte Carlo simulations. Some of them are well-imp
 Cassandra is written in Fortran 90, and was developed by the Maginn group at the university of Notre Dame. This package is still updated, and can be found at Github, which is a big plus. However, the package supports Class-I force-fields, which means bonded atoms only.
 
 To run the code, we need several files:
+
+* A Cassandra configuration script
+* A coordinate file for each box, given in xyz-format
+* A force-field file, given in mcf-format
+* A fragment file describing the molecule
+
+In the directory ~/tip4p-vapor/src/gemc_cassandra/, the necessary files for a GEMC run for simulating liquid-vapor coexistence can be found. The initial system consists of a cubic box with length 22.586 Å and 384 water molecules. This gives a mass density of 0.997 g/cm² and is supposed to represent the liquid phase. Additionally, we also have a cubic box of lengths 57 Å and 32 molecules. This is supposed to represent the vapor phase, even though the mass density is a magnitude higher than what we would expect for vapor. The Cassandra package is (by default) restricted by a value kmax=100000, which defines how large the box is allowed to be. Because of this, we were not allowed to have a system larger than 57 Å. [^diff2] However, no matter what the initial configuration is, we will get a point on the coexistence curve, though maybe not very close to the boiling point.
+
+As explained above, we also need to set various probabilities before we start the simulation. More specifically, we need to choose a translation probability ($P_{\text{trans}}$), rotation probability ($P_{\text{rot}}$), volume exchange probability ($P_{\text{vol}}$) and particle exchange probability ($P_{\text{par}}$). Here, we have chosen
+
+* $P_{\text{trans}}=0.30$
+* $P_{\text{rot}}=0.30$
+* $P_{\text{vol}}=0.04$
+* $P_{\text{par}}=0.36$
+
+The particle exchange probability is probably way to high, and the translation probability is way too low in this example. Anyway, we will get a lot of particle exchanges, which is cool. The probability of volume exchange is set to held low was volume exchange is a computationally expensive operation. When simulating the system at a temperature 300K, we get the following behavior:
+
+FIGURE: [../fig/two_phases/density.png, width=500 frac=0.8] Density as a function of time \label{fig:density}
+
+FIGURE: [../fig/two_phases/enthalpy.png, width=500 frac=0.8] Enthalpy as a function of time \label{fig:enthalpy}
+
+FIGURE: [../fig/two_phases/nmols.png, width=500 frac=0.8] Number of molecules as a function of time \label{fig:nmols}
+
+FIGURE: [../fig/two_phases/pressure.png, width=500 frac=0.8] Pressure as a function of time \label{fig:pressure}
+
+FIGURE: [../fig/two_phases/volume.png, width=500 frac=0.8] Volume as a function of time \label{fig:volume}
+
+What we observe, is that the two boxes exchange a lot of particles immediately after the simulation has started to decrease the high initial pressure. The system seems to converge towards a stable state. To proceed further, we need to extract the information that we need: Most important the equilibrium pressure, but also the equilibrium densities in order to find the enthalpy- and volume differences between the two boxes. In principle, we could have found the enthalpy- and volume differences directly from the GEMC simulation, but it is good practice to run new, separate simulations for the two phases to get a better estimate. This can either be done using molecular dynamics simulations or Monte Carlo simulations.
+
+[^diff2]: It is *possible* to increase the kmax value in the source code and recompile, but this is not recommended as it might gives Segmentation fault.

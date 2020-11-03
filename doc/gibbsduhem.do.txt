@@ -8,7 +8,7 @@ h_1d\beta+\beta v_1dp=h_2d\beta +\beta v_2dp,
 !et
 which can be rewritten as
 !bt
-\left(\frac{dp}{d\beta}\right)_{\sigma}=-\frac{\Delta h}{\beta\Delta h},
+\left(\frac{dp}{d\beta}\right)_{\sigma}=-\frac{\Delta h}{\beta\Delta v},
 !et
 where $\Delta h = h_2 - h_1$ and $\Delta v = v_2 - v_1$. In this equation, the right-hand side is independent of $p$ (and then also the left-hand side), but to proceed further, we need to define differential equation that is dependent on both $p$ and $\beta$. We can use the relation
 !bt
@@ -16,7 +16,7 @@ where $\Delta h = h_2 - h_1$ and $\Delta v = v_2 - v_1$. In this equation, the r
 !et
 to define a differential equation that fulfills our requirements:
 !bt
-\left(\frac{d\ln p}{d\beta}\right)_{\sigma}=-\frac{\delta h}{\beta p\Delta v}=f(\beta, p)
+\left(\frac{d\ln p}{d\beta}\right)_{\sigma}=-\frac{\Delta h}{\beta p\Delta v}=f(\beta, p).
 !et
 We solve this equation numerically by going moving along the coexistence curve step-by-step with step length $\delta\beta$. This means that $\beta_i=\beta_{i-1}+\delta\beta$. We approximate
 !bt
@@ -32,7 +32,7 @@ p_i=p_{i-1}\exp(\delta\beta f_{i-1}).
 !et
 This is a first estimate of the pressure. However, this is poor as we only used the old $f$-value in our calculation. To get a better estimate, can we now calculate
 !bt
-f_i=f(\beta_i, p_i)=\frac{\Delta h}{\beta_0 p_0\Delta v}
+f_i=f(\beta_i, p_i)=\frac{\Delta h}{\beta_i p_i\Delta v}
 !et
 and get a better estimate of $p_i$ by calculating
 !bt

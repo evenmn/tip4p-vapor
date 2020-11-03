@@ -1,3 +1,54 @@
-Monte Carlo (MC) simulations is an alternative to molecular dynamics simulations. Instead of solving the equation of motion directly, the particles are sampled throughout the space and average properties are measured. As ergodicity applies to our systems, the time-averaged properties are assumed to be equal to the space-averaged ones. Monte Carlo simulations hold the temperature constant by default as we move the particles a random distance drawn from a normal distribution at every time step. Therefore, ordinary Monte carlo simulations model the NVT ensemble.
+Monte Carlo (MC) simulations is an alternative to molecular dynamics simulations. Where molecular dynamics simulations actually solve the equation of motion and find time-averaged properties directly, Monte Carlo simulations utilize statistical mechanics in order to find time-averages. We know that the time-average of a property $A$ is given by
 
-INCLUDE SOME EQUATIONS HERE, INCLUDING PARTITION FUNCTION
+!bt
+\langle A\rangle_t = \frac{\int d\boldsymbol{r}^N\exp(-\beta E(\boldsymbol{r}^N))A(\boldsymbol{r}^N)}{\int d\boldsymbol{r}^N\exp(-\beta E(\boldsymbol{r}^N))},
+!et
+
+where $\boldsymbol{r}^N$ are the coordinates of the $N$ particles. The probability of finding the system in state associated with $\boldsymbol{r}^N$ is given by
+
+!bt
+P(\boldsymbol{r}^N)=\frac{\exp(-\beta E(\boldsymbol{r}^N))}{Z},
+!et
+
+with $Z$ as the partition function;
+
+!bt
+Z=\int d\boldsymbol{r}^N\exp(-\beta E(\boldsymbol{r}^N)).
+!et
+
+We can then rewrite $\langle A\rangle_t$ and approximate it with a (dense) sum:
+
+!bt
+\langle A\rangle_t=\int d\boldsymbol{r}^N P(\boldsymbol{r}^N)A(\boldsymbol{r}^N)\approx\frac{1}{M}\sum_{i=1}^M A(\boldsymbol{r}_i^N),
+!et
+where $M$ is the number of steps and the coordinates $\boldsymbol{r}_i^N$ are drawn from the probability distribution $P(\boldsymbol{r}_i^N)$. In Monte Carlo simulations, we sample over the coordinate space, which apparently will not give us a time-average. However, in general we assume the system to be ergodic, which makes the time-average properties equal to the spatial-average properties.
+
+Here, we approach a potential problem: How do we compute $P(\boldsymbol{r}^N)$? Computing $Z$ is impossible even for relatively small systems, so we need to do something clever. Fortunately, Metropolis et al. discovered a work-around to this problem in the 1950's, where the relative probability is used instead of the absolute probability. The sampling technique, known as Metropolis sampling, is based on that a move follows *detailed balance*,
+
+!bt
+P(o)\pi(o\rightarrow n)=P(n)\pi(n\rightarrow o)
+!et
+
+where $o$ is an old state, $n$ is a new state, $P(i)$ is the probability of a state $i$ and $\pi(i\rightarrow j)$ is the probability of going from a state $i$ to a state $j$. Moreover, $\pi(o\rightarrow n)$ can be written as
+
+!bt
+\pi(o\rightarrow n)=\alpha(o\rightarrow n)\times\text{acc}(o\rightarrow n)
+!et
+
+where $\alpha(i\rightarrow j)$ is the transition matrix that determines the probability of performing a trial move from $i$ to $j$ and $\text{acc}(i\rightarrow j)$ is the probability of accepting a move from $i$ to $j$. In the original Metropolis scheme, the transition matrix is chosen to be symmetric such that $\alpha(i\rightarrow j)=\alpha(j\rightarrow i)$. In that case,
+
+!bt
+P(o)\times \text{acc}(o\rightarrow n)=P(n)\times\text{acc}(n\rightarrow o).
+!et
+
+We can then accept and reject proposed moves after the rule
+
+!bt
+\text{acc}(o\rightarrow n)=
+\begin{cases}
+P(n)/P(o) \qquad & \text{if}\quad P(n) < P(o) \\
+1 \qquad & \text{if}\quad P(n) \geq P(o)
+\end{cases}.
+!et
+
+More sophisticated Metropolis schemes exist, like the Metropolis-Hastings algorithm. It will not be covered here.
