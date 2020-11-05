@@ -52,3 +52,31 @@ P(n)/P(o) \qquad & \text{if}\quad P(n) < P(o) \\
 !et
 
 More sophisticated Metropolis schemes exist, like the Metropolis-Hastings algorithm. It will not be covered here.
+
+Yet, we have not discussed the possible Monte Carlo steps. For a system consisting of single (point) particles, the typical step is a translational move in a random direction and with a random length:
+
+!bt
+\boldsymbol{r}_{i}=\boldsymbol{r}_{i-1} + \Delta\boldsymbol{r}
+!et
+
+Usually, the step length is drawn from a normal distribution and the direction is chosen uniformly between the dimensions:
+
+!bt
+\Delta\boldsymbol{r}=\mathcal{N}(0, \sigma^2)\hat{i} + \mathcal{N}(0, \sigma^2)\hat{j} + \mathcal{N}(0, \sigma^2)\hat{k},
+!et
+
+with 0 as the mean step length and $\sigma$ as the standard deviation of the step length. By using the relation between kinetic energy and temperature, $\langle K\rangle=3k_BT/2$, we clearly see that $\sigma=T$, which means that the temperature is conserved in a standard Monte Carlo simulation. Additionally, the number of particles will be conserved and the volume is conserved if we add boundaries. Consequently, standard Monte Carlo simulations are performed in the canonical ensemble, NVT.
+
+For more molecular systems, we might as well perform rotational steps,
+
+!bt
+\boldsymbol{\Omega}_{i}=\boldsymbol{\Omega}_{i-1} + \Delta\boldsymbol{\Omega},
+!et
+
+where $\Delta\boldsymbol{\Omega}$ is drawn from a uniform distribution,
+
+!bt
+\Delta\boldsymbol{\Omega} = \mathcal{U}(0, \theta_{\text{max}})\hat{\theta} + \mathcal{U}(0, \phi_{\text{max}})\hat{\phi}.
+!et
+
+Furtermore, there are possible to do more advanced steps, like swap particles, remove particles, add particles, increase or decrease the volume and so on. These moves will not necessary resemble the canonical ensemble, but might hold other quantities constant which may resemble other ensembles. In fact, more ensembles are available in Monte Carlo simulations compared to molecular dynamics simulations.
