@@ -52,14 +52,17 @@ class File:
             raise IndexError("Window is larger than array size")
         else:
             remainder = len(arr) % window
-            avg = np.mean(arr[:-remainder].reshape(-1, window), axis=1)
+            if remainder == 0:
+                avg = np.mean(arr.reshape(-1, window), axis=1)
+            else:
+                avg = np.mean(arr[:-remainder].reshape(-1, window), axis=1)
         return avg
 
 
 if __name__ == "__main__":
-    window = 10
-    filenames = ["../tip4p_cassandra/gemc_nvt/gemc_nvt.out.box1.prp",
-                 "../tip4p_cassandra/gemc_nvt/gemc_nvt.out.box2.prp"]
+    window = 10000
+    filenames = ["../src/gemc_cassandra/gemc_nvt.out.box1.prp",
+                 "../src/gemc_cassandra/gemc_nvt.out.box2.prp"]
     phases = ["liquid", "vapor"]
 
     fileobjs = []
@@ -71,7 +74,7 @@ if __name__ == "__main__":
 
     import matplotlib.pyplot as plt
     keywords = ["Mass_Density", "Volume", "Nmols", "Enthalpy", "Pressure"]
-    # keywords = ["Pressure"]
+    keywords = ["Pressure"]
     for keyword in keywords:
         for fileobj, dependent, phase in zip(fileobjs, dependents, phases):
             arr = fileobj.find(keyword)
