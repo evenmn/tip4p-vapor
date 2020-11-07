@@ -26,6 +26,10 @@ TOC: on
 # #include "gibbsduhem.do.txt"
 
 !split
+========= Packages for Monte Carlo Simulations =========
+# #include "mcpackages.do.txt"
+
+!split
 ========= GEMC in Cassandra =========
 # #include "cassandra.do.txt"
 
