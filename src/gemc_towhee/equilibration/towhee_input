@@ -5,25 +5,25 @@ temperature
 nmolty
 1
 nmolectyp
-576
+280
 numboxes
 2
 stepstyle
 'cycles'
 nstep
-100
+1000
 controlstyle
 'equilibration'
 printfreq
-1
+10
 blocksize
-2
+20
 moviefreq
 0
 backupfreq
 0
 runoutput
-'blocks'
+'full'
 pdb_output_freq
 0
 loutdft 
@@ -47,13 +47,13 @@ initlattice
 'simple cubic'
 'simple cubic' 
 initmol
-512
+216
 64
 inix iniy iniz
-8    8     8
+6    6     6
 4    4     4      
 box_number_density
-32.12
+22.12
 5.0
 pm1boxcbswap
 0.000d0
@@ -147,12 +147,6 @@ pmrotate
           0.05d0
           tarot
           0.5d0
-# cbmc_formulation
-# 'Martin and Siepmann 1999 + Martin and Thompson 2004'
-# cbmc_setting_style
-# 'explicit'
-# cbmc_nb_one_generation
-# 'uniform'
 ffnumber
 1
 ff_filename
