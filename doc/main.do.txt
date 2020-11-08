@@ -36,3 +36,7 @@ TOC: on
 !split
 ========= GEMC in Towhee =========
 # #include "towhee.do.txt"
+
+!split
+========= GEMC in GOMC =========
+# # include "gomc.do.txt"

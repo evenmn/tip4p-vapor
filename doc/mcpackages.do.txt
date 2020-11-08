@@ -15,7 +15,7 @@ Below, we have listed a bunch of well-written Monte Carlo packages which are all
 
 We observe that all the listed packages have Gibbs Ensemble Monte Carlo (GEMC) implemented, and all support rigid molecules and Lennard-Jones molecules. However, just Cassandra and GOMC support true CPU parallelization (Towhee and RASPA2 support parallelization in the sense that several independent simulations can be run simultaneously). Cassandra is easy to use, and supports xyz-input format. The parallelization is automatized, and the program occupies the available CPUs while running. However, only Class I force fields are supported, and the system size is limited due to a static kmax parameter.
 
-The Towhee package has a long range of force fields implemented, and seemed perfect to me until I realized that it didn't support true parallelization. I have already developed a Towhee python interface.
+The Towhee package has a long range of force fields implemented, and seemed perfect to me until I realized that it didn't support true parallelization (but parallel tempering). I have already developed a Towhee python interface.
 
 GOMC (GPU Optimized Monte Carlo) supports complicated force fields and both CPU and GPU parallelization. However, only a few force fields are implemented, and this does not cover TIP4P. If it is a doable task, I might implement this myself.
 
