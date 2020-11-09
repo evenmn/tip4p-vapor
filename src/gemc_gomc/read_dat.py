@@ -50,8 +50,11 @@ class File:
 
 
 if __name__ == "__main__":
-    window = 10
-    filenames = ["Blk_SPCE_580_00_K_RESTART_BOX_0.dat"]
+    window = 1
+    filenames = ["Blk_TIP4P_300_00_K_RESTART_BOX_0.dat",
+                 "Blk_TIP4P_300_00_K_RESTART_BOX_1.dat"]
+
+    phases = ["liquid", "gas"]
 
     fileobjs = []
     dependents = []
@@ -66,10 +69,10 @@ if __name__ == "__main__":
                 "TOT_MOL", "TOT_DENS", "SURF_TENSION"]
     #keywords = ["PRESSURE"]
     for keyword in keywords:
-        for fileobj, dependent, in zip(fileobjs, dependents):
+        for fileobj, dependent, phase in zip(fileobjs, dependents, phases):
             arr = fileobj.find(keyword)
             arr_avg = fileobj.average(arr, window)
-            plt.plot(dependent, arr_avg)
+            plt.plot(dependent, arr_avg, label=phase)
         plt.xlabel("Steps")
         plt.ylabel(keyword)
         plt.legend(loc='best')
