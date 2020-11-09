@@ -1,0 +1,12 @@
+package require psfgen
+topology  topology_tip4p.inp
+segment ISB {
+  pdb   vapor_gomc_tip4p.pdb
+  first   none
+  last  none
+}
+
+coordpdb vapor_gomc_tip4p.pdb ISB
+
+writepsf ./STEP3_START_ISB_sys_BOX_1.psf
+writepdb ./STEP3_START_ISB_sys_BOX_1.pdb
