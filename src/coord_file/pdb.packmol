@@ -1,0 +1,8 @@
+tolerance 2.0
+filetype pdb
+output liquid_gomc.pdb
+
+structure water2.pdb
+  number 384
+  inside cube 0. 0. 0. 20.586
+end structure
