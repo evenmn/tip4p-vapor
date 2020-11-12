@@ -2,16 +2,16 @@ There exist many packages for Monte Carlo simulations, often made for different 
 
 Below, we have listed a bunch of well-written Monte Carlo packages which are all open-source.
 
-|--------------------------------------------------------------------------------------------------------|
-|         |GEMC|RIGID BONDS|FLEXIBLE BONDS|LOOSE BONDS|CPU PARALLELIZED|GPU PARALLELIZED|PYTHON INTERFACE|
-|--------------------------------------------------------------------------------------------------------|
+|-------------------------------------------------------------------------------------------------------|
+|         |GEMC|RIGID BONDS|FLEXIBLE BONDS|NON-BONDED|CPU PARALLELIZED|GPU PARALLELIZED|PYTHON INTERFACE|
+|-------------------------------------------------------------------------------------------------------|
 |Cassandra|✅  |✅         |✅            |❌         |✅              |❌              |✅             |
 |Towhee   |✅  |✅         |✅            |✅         |❌              |❌              |❌             |
 |GOMC     |✅  |✅         |✅            |✅         |✅              |✅              |❌             |
 |RASPA2   |✅  |✅         |✅            |✅         |❌              |❌              |✅             |
 |HOOMD    |✅  |✅         |❌            |❌         |✅              |✅              |✅             |
-|DL MONTE |✅  |✅         |✅            |✅         |✅              |✅              |✅             |
-|--------------------------------------------------------------------------------------------------------|
+|DL MONTE |✅  |✅         |✅            |✅         |✅              |❌              |✅             |
+|-------------------------------------------------------------------------------------------------------|
 
 We observe that all the listed packages have Gibbs Ensemble Monte Carlo (GEMC) implemented, and all support rigid molecules and Lennard-Jones molecules. However, just Cassandra and GOMC support true CPU parallelization (Towhee and RASPA2 support parallelization in the sense that several independent simulations can be run simultaneously). Cassandra is easy to use, and supports xyz-input format. The parallelization is automatized, and the program occupies the available CPUs while running. However, only Class I force fields are supported, and the system size is limited due to a static kmax parameter.
 
