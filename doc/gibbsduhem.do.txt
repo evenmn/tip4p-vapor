@@ -39,3 +39,22 @@ and get a better estimate of $p_i$ by calculating
 \ln p_i=\ln p_{i-1} + \frac{\delta\beta}{2}(f_i+f_{i-1}).
 !et
 This is known as a predictor-corrector method, and it is possible to do more corrections to get an even better estimate of $p_i$. We can continue integrating along the coexistence curve until we reach 1 atm pressure. The corresponding $T$ is the critical temperature between our two phases at conditions like on the Earth's surface.
+
+======= Scaling and units =======
+So far, we have not discussed how the equations can be scaled or which units to use. Actually, we should have scales the equation before introducing $\ln$, as $\ln$ can only take dimensionless quantities. The typical way to scale such a expression, is to define a unit pressure as $p_0$, a unit volume as $v_0$, a unit energy as $\varepsilon_0$ and a unit reciprocal temperature $\beta_0$. Then, we can introduce massless quantities $p'=p/p_0$, $\Delta v'=\Delta v/v_0$, $\Delta h'=\Delta h/\varepsilon_0$ and $\beta'=\beta/\beta_0$. By inserting these quantities into the expression above, we observe that it can be rewritten as
+!bt
+\left(\frac{dp'}{d\beta'}\right)_{\sigma}=-\frac{\Delta h'}{\beta'\Delta v'}\cdot\frac{\varepsilon_0}{p_0\beta_0v_0}.
+!et
+The final fraction here is dimensionless.
+
+For our simulations, the pressure is typically around 1 atm, a typical length scale is Å and the energy can be measured in kcal. A convenient scaling would therefore be:
+
+* $p_0=1\text{ atm}=101,325\text{ Pa}=101,325\text{ N/m}^2$
+* $v_0=1\text{ Å}^3=1\cdot10^{-30}\text{ m}^3$
+* $\varepsilon_0=1\text{ kcal}=1/4184\text{ J}=1/4184\text{ Nm}$
+* $\beta_0=1/\text{k}_{\text{B}}\text{K}=1.380649\cdot10^{-23}\text{ J}=1.380649\cdot10^{-23}\text{ Nm}$
+
+such that
+!bt
+\frac{\varepsilon_0}{p_0\beta_0v_0}=0.0325667931
+!et
