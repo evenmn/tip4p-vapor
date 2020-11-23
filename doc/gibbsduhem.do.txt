@@ -16,7 +16,7 @@ where $\Delta h = h_2 - h_1$ and $\Delta v = v_2 - v_1$. In this equation, the r
 !et
 to define a differential equation that fulfills our requirements:
 !bt
-\left(\frac{d\ln p}{d\beta}\right)_{\sigma}=-\frac{\Delta h}{\beta p\Delta v}=f(\beta, p).
+\left(\frac{d\ln p}{d\beta}\right)_{\sigma}=-\frac{\Delta h}{\beta p\Delta v}\equiv f(\beta, p).
 !et
 We solve this equation numerically by going moving along the coexistence curve step-by-step with step length $\delta\beta$. This means that $\beta_i=\beta_{i-1}+\delta\beta$. We approximate
 !bt
@@ -56,5 +56,10 @@ For our simulations, the pressure is typically around 1 atm, a typical length sc
 
 such that
 !bt
-\frac{\varepsilon_0}{p_0\beta_0v_0}=0.0325667931
+C\equiv\frac{\varepsilon_0}{p_0\beta_0v_0}=0.0325667931.
+!et
+
+This conversion factor can also be used in the latter representation, which is actually used in the computations:
+!bt
+\left(\frac{d\ln p'}{d\beta'}\right)_{\sigma}=-C\frac{\Delta h'}{\beta' p'\Delta v'}\equiv f(\beta', p').
 !et
