@@ -1,6 +1,10 @@
 Here, we will present the results from the coexistence simulations of water and vapor. In particular, we are interested in the boiling point and the vaporization enthalpy at 1 atm pressure. However, since we perform Gibbs-Duhem integration along the coexistence curve, it costs nothing to find the boiling point and vaporization enthalpy at other pressures as well. Furthermore, we will present densities of the two phases at various pressures.
 
-======= Coexistence curve =======
+===== Coexistence curve =====
 First, we tried to run Gibbs-Duhem integration with step length $\delta\beta'=1\cdot 10^{-7}\text{ K}^{-1}$. The number of equilibration steps and production steps used in the NPT molecular dynamics simulations was 2000. The initial densities of the molecular dynamics simulations were not updated throughout the integration. It turned out that the scaling factor used was wrong (we forgot to include Avogadro's number which the LAMMPS energy is multiplied with). We also ran on 30 CPU cores, but it turned out that the simulations actually are faster on 8 CPU cores.
 
 FIGURE: [../fig/gibbsduhem/first_attempt.png, width=500 frac=0.8] First attempt of finding the coexistence curve label{fig:coex1}
+
+After running with the correct scaling factor (hopefully), we observe that the coexistence curve is more realistic. However, it is still too steep compared to cite[abascal,vega]. this might be because the equilibration issues discussed above. Here, $\delta\beta'=1\cdot 10^{-5}\text{ K}^{-1}$
+
+FIGURE: [../fig/gibbsduhem/second_attempt.png, width=500 frac=0.8] Second attempt of finding the coexistence curve label{fig:coex2}
