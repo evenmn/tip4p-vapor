@@ -6,7 +6,7 @@ One of the main reasons why we chosen this package over the other packages, was 
 
 Typically, 200-300 moves are accepted per second, which is not that many. One of the reasons is that only about 50% of the moves are accepted, which indicates that some of the configurations should be changed. Below 1% of the swap moves are accepted. Furthermore, the volume exchange seems to be extremely expensive.
 
-FIGURE: [../fig/printscreen/performance.png, width=500 frac=0.8] Performance of GOMC{fig:screenshot}
+FIGURE: [../fig/printscreen/performance.png, width=500 frac=0.8] Performance of GOMC label{fig:screenshot}
 
 Here, we have used:
 
@@ -30,3 +30,25 @@ FIGURE: [../fig/gomc/pressure_300K_avg.png, width=500 frac=0.8] Time-averaged pr
 FIGURE: [../fig/gomc/pressure_300K_zoomed.png, width=500 frac=0.8] Time-averaged and zoomed pressure as a function of step label{fig:presszoom}
 
 We can obviously see that the system has not converged.
+
+===== Long simulation =====
+It turned out that the system needed 10,000,000 steps in order to converge. Below, we present the pressure, density, number of molecules and surface tension from this simulation.
+
+FIGURE: [../fig/long/pressure_1.png, width=500 frac=0.8] Pressure as a function of step label{fig:pressurelong1}
+
+FIGURE: [../fig/long/pressure_2.png, width=500 frac=0.8] Pressure as a function of step label{fig:pressurelong2}
+
+FIGURE: [../fig/long/pressure_3.png, width=500 frac=0.8] Pressure as a function of step label{fig:pressurelong3}
+
+FIGURE: [../fig/long/density.png, width=500 frac=0.8] Density as a function of step label{fig:densitylong}
+
+FIGURE: [../fig/long/nmol.png, width=500 frac=0.8] Number of molecules as a function of step label{fig:nmollong}
+
+FIGURE: [../fig/long/surface_tension.png, width=500 frac=0.8] Surface tension as a function of step label{fig:surfacetensionlong}
+
+What we do see, is that the system has converged at $0.36$ bar, with mass density $0.970\text{ g/cm}^3$ and $0.00022\text{ g/cm}^3$ in the two boxes. This agrees more or less perfectly with cite[vega,abascal,nezbeda]. This is all we need for the Gibbs-Duhem integration. The temperature was held constant at 370 K.
+
+This simulation took around 10 hours to run on a P100 GPU, which is not acceptable. We need to be able to evaluate a parameter set in less than two hours. The reason why it takes to long, is because the initial configuration is far from equilibrated. One way to solve this, is to equilibrate the system using molecular dynamics simulations.
+
+===== A more thought-through simulation =====
+Here, we will see if equilibration of the system using molecular dynamics is a good idea.

@@ -2,6 +2,6 @@
 
 filename=$1
 
-doconce format html $filename --pygments_html_style=native --keep_pygments_html_bg
+doconce format html $filename --pygments_html_style=native --keep_pygments_html_bg --no_abort
 doconce slides_html $filename reveal --html_slide_theme=serif
 firefox $filename".html"

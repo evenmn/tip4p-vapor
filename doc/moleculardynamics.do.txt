@@ -8,12 +8,12 @@ In our case, the system of interest is water. Many water force-fields have been 
 
 One of the reasons why water is hard to simulate is the relatively large surface tension. Usually when we simulate water, we avoid this by applying periodic boundary conditions in all directions. However, when simulating liquid-vapor coexistence, we necessarily need an interface between the phases, which has to be a surface. We can reduce the surface by making the system very narrow:
 
-FIGURE: [../fig/md_sim/initial.png, width=1000 frac=0.8] Initial narrow system consisting of 8000 water molecules. \label{fig:initial}
+FIGURE: [../fig/md_sim/initial.png, width=1000 frac=0.8] Initial narrow system consisting of 8000 water molecules. label{fig:initial}
 
-FIGURE: [../fig/md_sim/two_phases.png, width=1000 frac=0.8] Molecular dynamics simulation of liquid-vapor coexistence at 400K. \label{fig:twophases}
+FIGURE: [../fig/md_sim/two_phases.png, width=1000 frac=0.8] Molecular dynamics simulation of liquid-vapor coexistence at 400K. label{fig:twophases}
 
 but even for this system a large amount of the particles are on or close to the surface. It turns out that even for a system of 1.000.000 molecules, 6% of the particles are surface particles cite{frenkelsmit}. To perform a realistic liquid-gas transition of water, we are need a system where just a very small amount of the particles are surface atoms. This requires a huge system. Additionally, the water should be heated very slowly to make us observe acceptable estimates of phase transition properties. Both these factors contribute to making molecular dynamics simulations of water vaporization in the best case scenario extremely time-consuming, in the worst case scenario intractable.
 
 In other words, it is especially hard to simulate the liquid-vapor coexistence of water using molecular dynamics simulations. It is important to stress that this is a physical property of water, and is not about the simulations being wrong. Typically, small water systems tend to boil at a way too high temperature. For the system above, the boiling point was found to be at 610K.
 
-FIGURE: [../fig/md_sim/boiling.png, width=500 frac=0.8] Enthalpy plotted as a function of temperature to find boiling point and vaporization enthalpy. \label{fig:boiling}
+FIGURE: [../fig/md_sim/boiling.png, width=500 frac=0.8] Enthalpy plotted as a function of temperature to find boiling point and vaporization enthalpy. label{fig:boiling}

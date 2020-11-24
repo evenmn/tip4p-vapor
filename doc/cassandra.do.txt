@@ -20,15 +20,15 @@ As explained above, we also need to set various probabilities before we start th
 
 The particle exchange probability is probably way to high, and the translation probability is way too low in this example. Anyway, we will get a lot of particle exchanges, which is cool. The probability of volume exchange is set to held low was volume exchange is a computationally expensive operation. When simulating the system at a temperature 300K, we get the following behavior:
 
-FIGURE: [../fig/two_phases/density.png, width=500 frac=0.8] Density as a function of time \label{fig:density}
+FIGURE: [../fig/two_phases/density.png, width=500 frac=0.8] Density as a function of time label{fig:density}
 
-FIGURE: [../fig/two_phases/enthalpy.png, width=500 frac=0.8] Enthalpy as a function of time \label{fig:enthalpy}
+FIGURE: [../fig/two_phases/enthalpy.png, width=500 frac=0.8] Enthalpy as a function of time label{fig:enthalpy}
 
-FIGURE: [../fig/two_phases/nmols.png, width=500 frac=0.8] Number of molecules as a function of time \label{fig:nmols}
+FIGURE: [../fig/two_phases/nmols.png, width=500 frac=0.8] Number of molecules as a function of time label{fig:nmols}
 
-FIGURE: [../fig/two_phases/pressure.png, width=500 frac=0.8] Pressure as a function of time \label{fig:pressure}
+FIGURE: [../fig/two_phases/pressure.png, width=500 frac=0.8] Pressure as a function of time label{fig:pressure}
 
-FIGURE: [../fig/two_phases/volume.png, width=500 frac=0.8] Volume as a function of time \label{fig:volume}
+FIGURE: [../fig/two_phases/volume.png, width=500 frac=0.8] Volume as a function of time label{fig:volume}
 
 What we observe, is that the two boxes exchange a lot of particles immediately after the simulation has started to decrease the high initial pressure. The system seems to converge towards a stable state. To proceed further, we need to extract the information that we need: Most important the equilibrium pressure, but also the equilibrium densities in order to find the enthalpy- and volume differences between the two boxes. In principle, we could have found the enthalpy- and volume differences directly from the GEMC simulation, but it is good practice to run new, separate simulations for the two phases to get a better estimate. This can either be done using molecular dynamics simulations or Monte Carlo simulations.
 

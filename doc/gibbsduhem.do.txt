@@ -43,20 +43,20 @@ This is known as a predictor-corrector method, and it is possible to do more cor
 ======= Scaling and units =======
 So far, we have not discussed how the equations can be scaled or which units to use. Actually, we should have scales the equation before introducing $\ln$, as $\ln$ can only take dimensionless quantities. The typical way to scale such a expression, is to define a unit pressure as $p_0$, a unit volume as $v_0$, a unit energy as $\varepsilon_0$ and a unit reciprocal temperature $\beta_0$. Then, we can introduce massless quantities $p'=p/p_0$, $\Delta v'=\Delta v/v_0$, $\Delta h'=\Delta h/\varepsilon_0$ and $\beta'=\beta/\beta_0$. By inserting these quantities into the expression above, we observe that it can be rewritten as
 !bt
-\left(\frac{dp'}{d\beta'}\right)_{\sigma}=-\frac{\Delta h'}{\beta'\Delta v'}\cdot\frac{\varepsilon_0}{p_0\beta_0v_0}.
+\left(\frac{dp'}{d\beta'}\right)_{\sigma}=-\frac{\Delta h'}{\beta'\Delta v'}\cdot\frac{\varepsilon_0}{p_0v_0}.
 !et
 The final fraction here is dimensionless.
 
 For our simulations, the pressure is typically around 1 atm, a typical length scale is Å and the energy can be measured in kcal. A convenient scaling would therefore be:
 
-* $p_0=1\text{ atm}=101,325\text{ Pa}=101,325\text{ N/m}^2$
+* $p_0=1\text{ bar}=100\text{ kPa}=1\cdot 10^5\text{ N/m}^2$
 * $v_0=1\text{ Å}^3=1\cdot10^{-30}\text{ m}^3$
-* $\varepsilon_0=1\text{ kcal}=1/4184\text{ J}=1/4184\text{ Nm}$
-* $\beta_0=1/\text{k}_{\text{B}}\text{K}=1.380649\cdot10^{-23}\text{ J}=1.380649\cdot10^{-23}\text{ Nm}$
+* $\varepsilon_0=1\text{ kcal/mol}=1/(4184\text{ J}\cdot N_A)=1/(4184\text{ Nm}\cdot 6.022\cdot10^{23})$
+* $\beta_0=1/\text{k}_{\text{B}}\text{K}=1.380649\cdot10^{-23}\text{ J}^{-1}=1.380649\cdot10^{-23}\text{ Nm}^{-1}$
 
 such that
 !bt
-C\equiv\frac{\varepsilon_0}{p_0\beta_0v_0}=0.0325667931.
+C\equiv\frac{\varepsilon_0}{p_0v_0}=0.0039687835
 !et
 
 This conversion factor can also be used in the latter representation, which is actually used in the computations:
