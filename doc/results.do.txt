@@ -8,3 +8,9 @@ FIGURE: [../fig/gibbsduhem/first_attempt.png, width=500 frac=0.8] First attempt 
 After running with the correct scaling factor (hopefully), we observe that the coexistence curve is more realistic. However, it is still too steep compared to cite[abascal,vega]. this might be because the equilibration issues discussed above. Here, $\delta\beta'=1\cdot 10^{-5}\text{ K}^{-1}$
 
 FIGURE: [../fig/gibbsduhem/second_attempt.png, width=500 frac=0.8] Second attempt of finding the coexistence curve label{fig:coex2}
+
+To make the simulations less time-consuming, we reduced the number of particles to 6x6x6=216 in each box. Then, it takes around 5 minutes to find a point on the coexistence curve. Furthermore, we experimented with various step lengths, and we observed that $\delta\beta=1\cdot 10^{-6} \text{ K}^{-1}$ did not give a notably better curve than $\delta\beta=1\cdot 10^{-5} \text{ K}^{-1}$:
+
+FIGURE: [../fig/gibbsduhem/fourth_attempt.png, width=500 frac=0.8] Third attempt of finding the coexistence curve label{fig:coex3}
+
+The curve is still slightly too steep compared to the coexistence curve found by cite{vega,abascal}. 
